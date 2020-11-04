@@ -46,6 +46,8 @@ class Window(pyglet.window.Window):
 
         # time
         self.init_time = datetime.datetime.now()
+        self.tmp_time = 0
+        self.tmp_kps = 0
 
         # label
         self.key_pressed_count_label = []
@@ -62,7 +64,8 @@ class Window(pyglet.window.Window):
             "", font_name=self.my_config["font_name"], font_size=10, x=360, y=100, anchor_x="center")
         self.elapsed_time_label = pyglet.text.Label(
             "", font_name=self.my_config["font_name"], font_size=10, x=360, y=70, anchor_x="center")
-
+        self.kps_label = pyglet.text.Label(
+            "KPS:0", font_name=self.my_config["font_name"], font_size=32, x=360, y=140, anchor_x="center")
         # joypad
         self.joysticks = pyglet.input.get_joysticks()
         for joystick in self.joysticks:
@@ -88,6 +91,7 @@ class Window(pyglet.window.Window):
             self.key_pressed_count_label[i].draw()
             self.current_time_label.draw()
             self.elapsed_time_label.draw()
+            self.kps_label.draw()
 
     def on_key_press(self, key, modifiers):
         if key == pyglet.window.key.ESCAPE:
@@ -102,6 +106,12 @@ class Window(pyglet.window.Window):
         self.current_time_label.text = str(
             dt_now.strftime("%Y/%m/%d %H:%M:%S"))
         self.elapsed_time_label.text = str((dt_now - self.init_time))
+
+
+        self.tmp_time += delta_time
+        if self.tmp_time > 1:
+            self.kps_label.text = "KPS:" + str(self.tmp_kps)
+            self.tmp_time = self.tmp_kps = 0
 
         # joypad
         for j, joystick in enumerate(self.joysticks):
@@ -171,6 +181,7 @@ class Window(pyglet.window.Window):
 
     def make_note(self, i):
         self.key_pressed_count[i] += 1
+        self.tmp_kps += 1
         self.key_pressed_count_label[i].text = str(self.key_pressed_count[i])
         # make notes
         if i <= 1 or 16 <= i:
