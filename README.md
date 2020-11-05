@@ -8,7 +8,7 @@
 
 デフォルトでは1Pが`qwerty`、LSHIFT、PS2専コン1つ目で、2Pが`,l.;/:\`、RSHIFT、PS2専コン2つ目の割り当てになっています。カンマ区切りで複数のjoypadやボタンを割り当てることができます。
 
-鍵盤の順番は1Pが0~8番目に`皿皿1234567`で2Pが9~17番目に`1234567皿皿`です。
+鍵盤の順番は1Pが0～8番目に`皿皿1234567`で2Pが9～17番目に`1234567皿皿`です。
 
 ### Virtual key codes参考
 https://docs.microsoft.com/ja-jp/windows/win32/inputdev/virtual-key-codes
