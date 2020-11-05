@@ -42,7 +42,7 @@ class Window(pyglet.window.Window):
 
         self.key_pressed = [False for i in range(18)]
         self.key_pressed_button = [-1 for i in range(18)]
-        self.key_pressed_count = [-1 for i in range(18)]
+        self.key_pressed_count = [0 for i in range(18)]
 
         # time
         self.init_time = datetime.datetime.now()
@@ -74,9 +74,6 @@ class Window(pyglet.window.Window):
     def load_config(self):
         with open("config.json", "r") as f:
             self.my_config = json.load(f)
-            for i in range(18):
-                for j, key in enumerate(self.my_config["keyboard"][i]):
-                    self.my_config["keyboard"][i][j] = int(key, 16)
 
     def on_draw(self):
         self.clear()
@@ -163,12 +160,12 @@ class Window(pyglet.window.Window):
         for i in range(18):  # 鍵盤のindex
             for key in self.my_config["keyboard"][i]:
                 if not self.key_pressed[i]:
-                    if getkey(key):
+                    if getkey(int(key, 16)):
                         self.key_pressed[i] = True
                         self.key_pressed_button[i] = key
                         self.make_note(i)
 
-                elif not getkey(key) and self.key_pressed_button[i] == key:
+                elif not getkey(int(key, 16)) and self.key_pressed_button[i] == key:
                     self.key_pressed[i] = False
 
         # note
