@@ -10,7 +10,7 @@ from collections import deque
 # constants
 SCREEN_WIDTH = 720
 SCREEN_HEIGHT = 640
-SCREEN_TITLE = "BMKeyLogger 20201105"
+SCREEN_TITLE = "BMKeyLogger 20201106"
 
 
 def getkey(key):
@@ -125,35 +125,35 @@ class Window(pyglet.window.Window):
                             self.key_pressed[i] = False
                     elif button == "-x":
                         if not self.key_pressed[i]:
-                            if joystick.x == -1.0:
+                            if joystick.x <= -self.my_config["threshold"]:
                                 self.key_pressed[i] = True
                                 self.key_pressed_button[i] = "-x"
                                 self.make_note(i)
-                        elif joystick.x != -1.0 and self.key_pressed_button[i] == "-x":
+                        elif joystick.x > -self.my_config["threshold"] and self.key_pressed_button[i] == "-x":
                             self.key_pressed[i] = False
                     elif button == "+x":
                         if not self.key_pressed[i]:
-                            if joystick.x == 1.0:
+                            if joystick.x >= self.my_config["threshold"]:
                                 self.key_pressed[i] = True
                                 self.key_pressed_button[i] = "+x"
                                 self.make_note(i)
-                        elif joystick.x != 1.0 and self.key_pressed_button[i] == "+x":
+                        elif joystick.x < self.my_config["threshold"] and self.key_pressed_button[i] == "+x":
                             self.key_pressed[i] = False
                     elif button == "-y":
                         if not self.key_pressed[i]:
-                            if joystick.y == -1.0:
+                            if joystick.y <= -self.my_config["threshold"]:
                                 self.key_pressed[i] = True
                                 self.key_pressed_button[i] = "-y"
                                 self.make_note(i)
-                        elif joystick.y != -1.0 and self.key_pressed_button[i] == "-y":
+                        elif joystick.y > -self.my_config["threshold"] and self.key_pressed_button[i] == "-y":
                             self.key_pressed[i] = False
                     elif button == "+y":
                         if not self.key_pressed[i]:
-                            if joystick.y == 1.0:
+                            if joystick.y >= self.my_config["threshold"]:
                                 self.key_pressed[i] = True
                                 self.key_pressed_button[i] = "+y"
                                 self.make_note(i)
-                        elif joystick.y != 1.0 and self.key_pressed_button[i] == "+y":
+                        elif joystick.y < self.my_config["threshold"] and self.key_pressed_button[i] == "+y":
                             self.key_pressed[i] = False
 
         # keyboard

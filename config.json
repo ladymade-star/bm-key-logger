@@ -1,6 +1,7 @@
 {
     "font_name": "Times New Roman",
     "speed": 720,
+    "threshold":0.9,
     "joypad": [
         [
             [],
