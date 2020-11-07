@@ -11,7 +11,10 @@
 鍵盤の順番は1Pが0～8番目に`皿皿1234567`で2Pが9～17番目に`1234567皿皿`です。
 
 `threshold`にはx軸y軸の閾値を記述します。デフォルトは0.9です。
+
 `font_name`には使用するフォントの名前を記述します。
+
+`screen_height`には画面の縦幅を記述します。デフォルトは720です。
 
 ### Virtual key codes参考
 https://docs.microsoft.com/ja-jp/windows/win32/inputdev/virtual-key-codes
