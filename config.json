@@ -1,7 +1,8 @@
 {
     "font_name": "",
     "speed": 720,
-    "threshold":0.9,
+    "screen_height": 720,
+    "threshold": 0.9,
     "joypad": [
         [
             [],
