@@ -10,7 +10,7 @@ from collections import deque
 # constants
 SCREEN_WIDTH = 720
 SCREEN_HEIGHT = 640
-SCREEN_TITLE = "BMKeyLogger 20201106"
+SCREEN_TITLE = "BMKeyLogger 20201107"
 
 
 def getkey(key):
