@@ -86,9 +86,9 @@ class Window(pyglet.window.Window):
 
             # label
             self.key_pressed_count_label[i].draw()
-            self.current_time_label.draw()
-            self.elapsed_time_label.draw()
-            self.kps_label.draw()
+        self.current_time_label.draw()
+        self.elapsed_time_label.draw()
+        self.kps_label.draw()
 
     def on_key_press(self, key, modifiers):
         if key == pyglet.window.key.ESCAPE:
